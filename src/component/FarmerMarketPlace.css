@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #5c5c5c;
+    color: white;
+    text-align: center;
+    position: relative;
+  }
+  
+  .content {
+    max-width: 600px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 1.2rem;
+  }
+  
+  .register-btn {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  .register-btn:hover {
+    background-color: #e6b800;
+  }
+  
+  .login-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .login-btn:hover {
+    background-color: white;
+    color: black;
+  }
