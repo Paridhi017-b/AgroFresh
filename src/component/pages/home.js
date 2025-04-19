@@ -7,7 +7,9 @@ import "./home.css"; // Ensure you have the CSS file
 const Home = () => {
   return (
     <div>
+      
       <div className="farmer-dashboard">
+      
       {/* Hero Section */}
       <header className="hero">
         <div className="hero-overlay">
