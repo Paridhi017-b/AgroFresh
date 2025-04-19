@@ -86,8 +86,8 @@ const SignUp = () => {
             </div>
 
             <div className="terms">
-    <label>
-        <input type="checkbox" required />
+            <input type="checkbox" id="agree" />
+            <label for="agree">
         <span>I agree to all statements in <a href="#">Terms of service</a></span>
     </label>
 </div>

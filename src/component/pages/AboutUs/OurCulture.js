@@ -9,57 +9,55 @@ const cultureValues = [
     subtitle: "By being genuine and helpful",
     description: "We openly acknowledge our weaknesses and constantly seek feedback to learn from everyone around us.",
     icon: "🧠",
-    color: "sky-card",
+    color: "culture-sky-card",
   },
   {
     title: "Disagree & Commit",
     subtitle: "United in purpose",
     description: "We encourage diverse perspectives but unite behind decisions to drive our mission forward.",
     icon: "🤝",
-    color: "mint-card",
+    color: "culture-mint-card",
   },
   {
     title: "Be Positive",
     subtitle: "Fuel for progress",
     description: "We maintain optimism and tackle challenges with energy and smiles.",
     icon: "😊",
-    color: "butter-card",
+    color: "culture-butter-card",
   },
   {
     title: "Always Work Hard",
     subtitle: "Entrepreneurial spirit",
     description: "We take ownership, avoid shortcuts, and go above-and-beyond to deliver results.",
     icon: "🚀",
-    color: "peach-card",
+    color: "culture-peach-card",
   },
   {
     title: "Integrity Forever",
     subtitle: "When no one's watching",
     description: "We uphold honesty and ethical behavior in all actions, both visible and invisible.",
     icon: "🛡️",
-    color: "lavender-card",
+    color: "culture-lavender-card",
   },
   {
     title: "Deliver Results",
     subtitle: "Mission-focused execution",
     description: "We align on clear goals and overcome obstacles to achieve impactful outcomes.",
     icon: "🎯",
-    color: "blush-card",
+    color: "culture-blush-card",
   },
   {
     title: "Do More With Less",
     subtitle: "Resourceful by design",
     description: "We maximize every asset and optimize costs without compromising quality.",
     icon: "💎",
-    color: "ice-card",
+    color: "culture-ice-card",
   }
 ];
 
 export default function OurCulture() {
   return (
     <div className="culture-page">
-      
-      
       <section className="culture-hero">
         <div className="hero-overlay"></div>
         <div className="hero-content">
@@ -73,10 +71,14 @@ export default function OurCulture() {
             <div className="deco-square"></div>
             <div className="deco-dots">
               {[...Array(12)].map((_, i) => (
-                <div key={i} className="deco-dot" style={{
-                  transform: `rotate(${i * 30}deg) translate(120px) rotate(-${i * 30}deg)`,
-                  animationDelay: `${i * 0.1}s`
-                }}></div>
+                <div
+                  key={i}
+                  className="deco-dot"
+                  style={{
+                    transform: `rotate(${i * 30}deg) translate(120px) rotate(-${i * 30}deg)`,
+                    animationDelay: `${i * 0.1}s`,
+                  }}
+                ></div>
               ))}
             </div>
           </div>
@@ -96,11 +98,9 @@ export default function OurCulture() {
 
         <div className="values-grid">
           {cultureValues.map((value, index) => (
-            <div 
-              key={index} 
-              className={`value-card ${value.color} ${value.pattern} ${
-                index === 6 ? 'centered-card' : ''
-              }`}
+            <div
+              key={index}
+              className={`value-card ${value.color} ${index === 6 ? 'centered-card' : ''}`}
             >
               <div className="card-bg-pattern"></div>
               <div className="card-content">
@@ -113,9 +113,9 @@ export default function OurCulture() {
               </div>
             </div>
           ))}
-         
         </div>
       </section>
+
     </div>
   );
 }
