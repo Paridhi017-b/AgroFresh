@@ -23,7 +23,7 @@ import "./Explore.css";
 import Navbar from "../Navbar";
 
 const Explore = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -69,7 +69,6 @@ const Explore = () => {
     });
   };
 
-  
   const removeFromCart = (productName) => {
     setCartItems(prevItems => {
       const existingItem = prevItems.find(item => item.name === productName);
@@ -228,6 +227,11 @@ const Explore = () => {
       </motion.button>
 
       {/* Sidebar */}
+      {/* Hamburger Icon */}
+<div className={`hamburger-wrapper ${isSidebarOpen ? 'hide' : ''}`} onClick={toggleSidebar}>
+  <FaBars />
+</div>
+
       <AnimatePresence>
         {isSidebarOpen && (
           <motion.aside
@@ -498,4 +502,4 @@ const Explore = () => {
   );
 };
 
-export default Explore;   
+export default Explore;
