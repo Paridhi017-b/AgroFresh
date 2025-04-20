@@ -69,6 +69,7 @@ const Explore = () => {
     });
   };
 
+  
   const removeFromCart = (productName) => {
     setCartItems(prevItems => {
       const existingItem = prevItems.find(item => item.name === productName);
@@ -497,4 +498,4 @@ const Explore = () => {
   );
 };
 
-export default Explore;
+export default Explore;   

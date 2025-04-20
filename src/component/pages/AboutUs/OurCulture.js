@@ -88,9 +88,11 @@ export default function OurCulture() {
       <section className="core-values">
         <div className="section-header">
           <h2>Our 7 Cultural Pillars</h2>
+          
           <div className="divider">
             <div className="divider-inner"></div>
           </div>
+          
           <p className="section-description">
             More than just words - these are the behaviors we live by daily to drive our mission forward
           </p>

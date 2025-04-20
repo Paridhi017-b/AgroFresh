@@ -199,6 +199,7 @@ const FarmerAccountPage = () => {
               <li>Exclusive market insights</li>
             </ul>
             <div className="modal-actions">
+              
               <button 
                 className="join-button"
                 onClick={() => navigate('/premium')}
@@ -434,7 +435,7 @@ const FarmerAccountPage = () => {
         
         <div 
           className="option-item"
-          onClick={() => navigateTo('/about')}
+          onClick={() => navigateTo('/our-culture')}
         >
           <FaInfoCircle className="option-icon" />
           <span>About AgroFresh</span>
@@ -450,7 +451,7 @@ const FarmerAccountPage = () => {
         
         <div 
           className="option-item"
-          onClick={() => navigateTo('/report-issue')}
+          onClick={() => navigateTo('/contact')}
         >
           <FaExclamationTriangle className="option-icon" />
           <span>Report an Issue</span>

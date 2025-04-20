@@ -130,46 +130,49 @@ const PremiumMembership = () => {
               </div>
 
               <div className="form-group">
-                <label>Payment Method</label>
-                <div className="payment-options">
-                  <label className={formData.paymentMethod === 'credit-card' ? 'active' : ''}>
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="credit-card"
-                      checked={formData.paymentMethod === 'credit-card'}
-                      onChange={handleChange}
-                    />
-                    <div className="payment-option-content">
-                      <span>Credit Card</span>
-                    </div>
-                  </label>
-                  <label className={formData.paymentMethod === 'paypal' ? 'active' : ''}>
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="paypal"
-                      checked={formData.paymentMethod === 'paypal'}
-                      onChange={handleChange}
-                    />
-                    <div className="payment-option-content">
-                      <span>PayPal</span>
-                    </div>
-                  </label>
-                  <label className={formData.paymentMethod === 'bank-transfer' ? 'active' : ''}>
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="bank-transfer"
-                      checked={formData.paymentMethod === 'bank-transfer'}
-                      onChange={handleChange}
-                    />
-                    <div className="payment-option-content">
-                      <span>Bank Transfer</span>
-                    </div>
-                  </label>
-                </div>
-              </div>
+  <label>Payment Method</label>
+  <div className="payment-options">
+    <label className={formData.paymentMethod === 'credit-card' ? 'active' : ''}>
+      <input
+        type="radio"
+        name="paymentMethod"
+        value="credit-card"
+        checked={formData.paymentMethod === 'credit-card'}
+        onChange={handleChange}
+      />
+      <div className="payment-option-content">
+        Credit Card
+      </div>
+    </label>
+
+    <label className={formData.paymentMethod === 'paypal' ? 'active' : ''}>
+      <input
+        type="radio"
+        name="paymentMethod"
+        value="paypal"
+        checked={formData.paymentMethod === 'paypal'}
+        onChange={handleChange}
+      />
+      <div className="payment-option-content">
+        PayPal
+      </div>
+    </label>
+
+    <label className={formData.paymentMethod === 'bank-transfer' ? 'active' : ''}>
+      <input
+        type="radio"
+        name="paymentMethod"
+        value="bank-transfer"
+        checked={formData.paymentMethod === 'bank-transfer'}
+        onChange={handleChange}
+      />
+      <div className="payment-option-content">
+        Bank Transfer
+      </div>
+    </label>
+  </div>
+</div>
+
 
               <button type="submit" className="join-button">
                 <span>Join Now</span>

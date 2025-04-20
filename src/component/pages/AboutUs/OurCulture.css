@@ -98,6 +98,9 @@
 .culture-page .section-header {
   text-align: center;
   margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .culture-page .section-header h2 {
@@ -111,7 +114,7 @@
   width: 100px;
   height: 4px;
   background: linear-gradient(to right, #ed8936, #dd6b20);
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.5rem; /* ↓ tighter spacing */
   position: relative;
   overflow: hidden;
 }
@@ -124,10 +127,11 @@
 }
 
 .culture-page .section-description {
-  max-width: 700px;
-  margin: 0 auto;
+  max-width: 600px;
   font-size: 1.1rem;
   color: #4a5568;
+  line-height: 1.6;
+  text-align: center;
 }
 
 .culture-page .values-grid {
@@ -327,3 +331,6 @@
     height: 150px;
   }
 }
+
+
+
