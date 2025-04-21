@@ -93,6 +93,37 @@
   font-weight: bold;
 }
 
+.hamburger-wrapper {
+  position: fixed;
+  top: 85px; /* adjust if navbar is taller */
+  left: 20px;
+  font-size: 24px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide hamburger when sidebar is open */
+.hamburger-wrapper.hide {
+  display: none;
+}
+
+/* Optional: Adjust for mobile if needed */
+@media (max-width: 768px) {
+  .hamburger-wrapper {
+    top: 70px;
+    left: 15px;
+    font-size: 20px;
+  }
+}
+
+
 /* Toggle Button */
 .sidebar-toggle {
   position: absolute;
