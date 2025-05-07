@@ -8,10 +8,10 @@ app.use(express.json());
 
 // MySQL connection
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "1234",
-  database: "agrofresh",
+  host: "sql12.freesqldatabase.com",
+  user: "sql12777507",
+  password: "eHzBTq3yFA",
+  database: "sql12777507",
 });
 
 db.connect((err) => {
@@ -23,11 +23,11 @@ db.connect((err) => {
 });
 
 // Health check route
-app.get('/health', (req, res) => {
-  res.json({ status: 'OK', database: 'connected' });
+app.get("/health", (req, res) => {
+  res.json({ status: "OK", database: "connected" });
 });
 
-// Signup route
+// Signup route (for login system)
 app.post("/signup", (req, res) => {
   const { name, email, password } = req.body;
 
@@ -45,7 +45,7 @@ app.post("/signup", (req, res) => {
   });
 });
 
-// Login route
+// Signin route (for login system)
 app.post("/signin", (req, res) => {
   const { email, password } = req.body;
 
@@ -64,7 +64,25 @@ app.post("/signin", (req, res) => {
   });
 });
 
-// ✅ Server runs on port 5000
+// Farmer Registration route
+app.post("/register-farmer", (req, res) => {
+  const { fullName, email, phone, farmLocation, produceType } = req.body;
+
+  const sql = `
+    INSERT INTO farmers (full_name, email, phone_number, farm_location, produce_type)
+    VALUES (?, ?, ?, ?, ?)
+  `;
+
+  db.query(sql, [fullName, email, phone, farmLocation, produceType], (err, result) => {
+    if (err) {
+      console.error("❌ Error while registering farmer:", err);
+      return res.status(500).json({ success: false, message: "Database error" });
+    }
+    return res.status(200).json({ success: true, message: "Farmer registered successfully" });
+  });
+});
+
+// Start server
 const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
