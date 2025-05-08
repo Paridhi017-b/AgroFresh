@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Navbar from './Navbar'; // Import Navbar
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import Navbar from './Navbar';
 import './PremiumMembership.css';
 
 const PremiumMembership = () => {
+  const location = useLocation();
+  const routeEmail = location.state?.email || '';
+
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
+    email: routeEmail,
     phone: '',
     farmSize: '',
     paymentMethod: 'credit-card'
@@ -14,24 +17,48 @@ const PremiumMembership = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // If email is passed via route, update formData when component mounts
+  useEffect(() => {
+    if (routeEmail) {
+      setFormData((prev) => ({ ...prev, email: routeEmail }));
+    }
+  }, [routeEmail]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
+
+    try {
+      const res = await fetch("http://localhost:5000/premium-join", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        console.log("Submitted:", data.message);
+        setIsSubmitted(true);
+      } else {
+        alert("Error: " + data.message);
+      }
+    } catch (err) {
+      console.error("Submit failed:", err);
+      alert("Submission failed. Please try again later.");
+    }
   };
 
   if (isSubmitted) {
     return (
       <div className="premium-page">
-     
         <div className="premium-confirmation">
           <div className="confetti"></div>
           <div className="confetti"></div>
@@ -54,7 +81,7 @@ const PremiumMembership = () => {
 
   return (
     <div className="premium-page">
-    
+      <Navbar />
       <div className="premium-membership">
         <div className="premium-header">
           <h1>AgroFresh <span>Premium</span> Benefits</h1>
@@ -101,6 +128,7 @@ const PremiumMembership = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  disabled={!!routeEmail} // Disable if email was passed in
                 />
               </div>
 
@@ -130,49 +158,24 @@ const PremiumMembership = () => {
               </div>
 
               <div className="form-group">
-  <label>Payment Method</label>
-  <div className="payment-options">
-    <label className={formData.paymentMethod === 'credit-card' ? 'active' : ''}>
-      <input
-        type="radio"
-        name="paymentMethod"
-        value="credit-card"
-        checked={formData.paymentMethod === 'credit-card'}
-        onChange={handleChange}
-      />
-      <div className="payment-option-content">
-        Credit Card
-      </div>
-    </label>
-
-    <label className={formData.paymentMethod === 'paypal' ? 'active' : ''}>
-      <input
-        type="radio"
-        name="paymentMethod"
-        value="paypal"
-        checked={formData.paymentMethod === 'paypal'}
-        onChange={handleChange}
-      />
-      <div className="payment-option-content">
-        PayPal
-      </div>
-    </label>
-
-    <label className={formData.paymentMethod === 'bank-transfer' ? 'active' : ''}>
-      <input
-        type="radio"
-        name="paymentMethod"
-        value="bank-transfer"
-        checked={formData.paymentMethod === 'bank-transfer'}
-        onChange={handleChange}
-      />
-      <div className="payment-option-content">
-        Bank Transfer
-      </div>
-    </label>
-  </div>
-</div>
-
+                <label>Payment Method</label>
+                <div className="payment-options">
+                  {['credit-card', 'paypal', 'bank-transfer'].map(method => (
+                    <label key={method} className={formData.paymentMethod === method ? 'active' : ''}>
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        value={method}
+                        checked={formData.paymentMethod === method}
+                        onChange={handleChange}
+                      />
+                      <div className="payment-option-content">
+                        {method.replace('-', ' ').replace(/\b\w/g, c => c.toUpperCase())}
+                      </div>
+                    </label>
+                  ))}
+                </div>
+              </div>
 
               <button type="submit" className="join-button">
                 <span>Join Now</span>

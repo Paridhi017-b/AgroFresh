@@ -41,6 +41,8 @@ const FarmerAccountPage = () => {
         const res = await axios.get("http://localhost:5000/profile");
         if (res.data.success) {
           setUser(res.data.user);
+          navigate("/premium", { state: { email: res.data.user.email } });
+
         } else {
           navigate("/signin", { state: { from: "/farmer-account" } });
         }
@@ -209,8 +211,6 @@ const FarmerAccountPage = () => {
                 Close
               </button>
 
-              <button className="join-button" onClick={() => navigate('/premium')}>Join Now</button>
-              <button className="close-button" onClick={togglePremiumModal}>Close</button>
 
             </div>
           </div>

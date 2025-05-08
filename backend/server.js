@@ -130,3 +130,42 @@ const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
+
+// ✅ Contact Us form submission
+app.post("/contactus", (req, res) => {
+  const { fullName, emailAddress, phoneNumber, message } = req.body;
+
+  const sql = `
+    INSERT INTO contactus (full_name, email_address, phone_number, message)
+    VALUES (?, ?, ?, ?)
+  `;
+
+  db.query(sql, [fullName, emailAddress, phoneNumber, message], (err, result) => {
+    if (err) {
+      console.error("❌ Error while saving contact form:", err);
+      return res.status(500).json({ success: false, message: "Database error" });
+    }
+    return res.status(200).json({ success: true, message: "Message received successfully" });
+  });
+});
+
+app.post("/premium-join", (req, res) => {
+  const { name, email, phone, farmSize, paymentMethod } = req.body;
+
+  if (!name || !email || !farmSize || !paymentMethod) {
+    return res.status(400).json({ success: false, message: "All required fields must be filled." });
+  }
+
+  const sql = `
+    INSERT INTO premium_members (name, email, phone, farm_size, payment_method)
+    VALUES (?, ?, ?, ?, ?)
+  `;
+
+  db.query(sql, [name, email, phone, farmSize, paymentMethod], (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json({ success: false, message: "Internal server error" });
+    }
+    res.json({ success: true, message: "User successfully registered as a premium member" });
+  });
+});

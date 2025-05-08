@@ -1,12 +1,38 @@
-import React from "react";
-import { useNavigate } from "react-router-dom"; // 🆕 Import useNavigate
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./ContactUs.css";
+
 const ContactUs = () => {
-  const navigate = useNavigate(); // 🆕 Initialize navigate
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    emailAddress: "",
+    phoneNumber: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:5000/contactus", formData, {
+        withCredentials: true,
+      });
+      alert("✅ Message sent successfully!");
+      setFormData({ fullName: "", emailAddress: "", phoneNumber: "", message: "" });
+    } catch (error) {
+      alert("❌ Failed to send message.");
+      console.error("Contact form error:", error);
+    }
+  };
 
   return (
     <div>
-    
       {/* Contact Section */}
       <main className="contact-container">
         <h1 className="contact-title">We’re Here to Help!</h1>
@@ -43,11 +69,38 @@ const ContactUs = () => {
               Fill out the form below, and our team will get in touch with you shortly.
             </p>
           </div>
-          <form className="contact-form">
-            <input type="text" placeholder="Full Name" required />
-            <input type="email" placeholder="Email Address" required />
-            <input type="tel" placeholder="Phone Number" />
-            <textarea placeholder="Your Message" rows="5"></textarea>
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Full Name"
+              value={formData.fullName}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              name="emailAddress"
+              placeholder="Email Address"
+              value={formData.emailAddress}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="tel"
+              name="phoneNumber"
+              placeholder="Phone Number"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              rows="5"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            ></textarea>
             <button type="submit">Send Message</button>
           </form>
         </section>
