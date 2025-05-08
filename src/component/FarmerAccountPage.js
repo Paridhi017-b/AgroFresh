@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { 
   FaUser, FaShoppingBag, FaSeedling, FaLeaf, FaMoon, 
   FaStar, FaTicketAlt, FaInfoCircle, FaCommentAlt, 
@@ -8,10 +8,13 @@ import {
   FaTractor, FaWarehouse, FaChartLine,
   FaChevronDown, FaChevronUp
 } from 'react-icons/fa';
-import './FarmerAccountPage.css';
+import "./FarmerAccountPage.css";
+
+axios.defaults.withCredentials = true; // Session cookie bhejne ke liye zaroori
 
 const FarmerAccountPage = () => {
-  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState("");
   const [darkMode, setDarkMode] = useState(false);
   const [organicMode, setOrganicMode] = useState(false);
   const [showActivity, setShowActivity] = useState(false);
@@ -22,42 +25,26 @@ const FarmerAccountPage = () => {
     marketTrends: false
   });
   const [showPremiumModal, setShowPremiumModal] = useState(false);
-  const [farmerData, setFarmerData] = useState({
-    name: "",
-    email: "",
-    profileCompletion: 0,
-    rating: 0,
-    farmName: "",
-    products: [],
-    memberSince: "",
-    activity: [],
-    coupons: []
-  });
+  const navigate = useNavigate();
 
-  // Load user data from localStorage when component mounts
+  // Keep your original useEffect
   useEffect(() => {
-    const storedData = localStorage.getItem('farmerData');
-    if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      setFarmerData({
-        ...parsedData,
-        // Set default values if they don't exist in localStorage
-        profileCompletion: parsedData.profileCompletion || 20,
-        rating: parsedData.rating || 0,
-        farmName: parsedData.farmName || `${parsedData.email.split('@')[0]}'s Farm`,
-        products: parsedData.products || [],
-        memberSince: parsedData.memberSince || new Date().toLocaleDateString(),
-        activity: parsedData.activity || [
-          { id: 1, action: "Account created", date: new Date().toLocaleDateString(), amount: "" }
-        ],
-        coupons: parsedData.coupons || [
-          { id: 1, title: "Welcome Coupon", code: "WELCOME10", validUntil: new Date(Date.now() + 30*24*60*60*1000).toLocaleDateString() }
-        ]
-      });
-    } else {
-      // If no data in localStorage, redirect to signin
-      navigate('/signin');
-    }
+    const fetchProfile = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/profile");
+
+        if (res.data.success) {
+          setUser(res.data.user);
+        } else {
+          navigate("/signin", { state: { from: "/farmer-account" } });
+        }
+      } catch (err) {
+        console.error("❌ Failed to fetch profile:", err);
+        navigate("/signin", { state: { from: "/farmer-account" } });
+      }
+    };
+
+    fetchProfile();
   }, [navigate]);
 
   // Toggle functions
@@ -65,14 +52,10 @@ const FarmerAccountPage = () => {
     const newMode = !darkMode;
     setDarkMode(newMode);
     document.body.classList.toggle('dark-mode', newMode);
-    // Save preference
-    updateFarmerData({ darkMode: newMode });
   };
 
   const toggleOrganicMode = () => {
-    const newMode = !organicMode;
-    setOrganicMode(newMode);
-    updateFarmerData({ organicMode: newMode });
+    setOrganicMode(!organicMode);
   };
 
   const toggleActivity = () => {
@@ -83,30 +66,26 @@ const FarmerAccountPage = () => {
     setShowPremiumModal(!showPremiumModal);
   };
 
-  // Update farmer data in state and localStorage
-  const updateFarmerData = (updates) => {
-    const newData = { ...farmerData, ...updates };
-    setFarmerData(newData);
-    localStorage.setItem('farmerData', JSON.stringify(newData));
-  };
-
   // Handler functions
   const handleFarmOptionChange = (option) => {
-    const newOptions = {
+    setFarmOptions({
       ...farmOptions,
       [option]: !farmOptions[option]
-    };
-    setFarmOptions(newOptions);
-    updateFarmerData({ farmOptions: newOptions });
+    });
   };
 
   const handleNavigation = (tab) => {
     setActiveTab(tab);
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('farmerData');
-    navigate('/signin');
+  const handleLogout = async () => {
+    try {
+      await axios.post("http://localhost:5000/logout");
+      navigate("/signin");
+    } catch (err) {
+      console.error("❌ Logout failed:", err);
+      setError("Logout failed. Please try again.");
+    }
   };
 
   const handleCouponClick = (coupon) => {
@@ -143,9 +122,30 @@ const FarmerAccountPage = () => {
     </div>
   );
 
-  if (!farmerData.email) {
-    return <div className="loading-container">Loading...</div>;
+  if (!user) {
+    return (
+      <div className="loading-container">
+        <p>Loading your account...</p>
+      </div>
+    );
   }
+
+  // Initialize default data for the UI
+  const farmerData = {
+    name: user.name,
+    email: user.email,
+    profileCompletion: 65,
+    rating: 4.2,
+    farmName: `${user.email.split('@')[0]}'s Farm`,
+    products: [],
+    memberSince: new Date().toLocaleDateString(),
+    activity: [
+      { id: 1, action: "Account created", date: new Date().toLocaleDateString(), amount: "" }
+    ],
+    coupons: [
+      { id: 1, title: "Welcome Coupon", code: "WELCOME10", validUntil: new Date(Date.now() + 30*24*60*60*1000).toLocaleDateString() }
+    ]
+  };
 
   return (
     <div className={`farmer-account-container ${darkMode ? 'dark-mode' : ''}`}>
@@ -179,13 +179,12 @@ const FarmerAccountPage = () => {
         onClick={togglePremiumModal}
       >
         <div className="premium-content">
-
-    <FaSeedling className="premium-icon" />
-    <div className="premium-text">
-      <h2>Join AgroFresh Premium</h2>
-      <p>Get exclusive benefits for your farm</p>
-    </div>
-</div>
+          <FaSeedling className="premium-icon" />
+          <div className="premium-text">
+            <h2>Join AgroFresh Premium</h2>
+            <p>Get exclusive benefits for your farm</p>
+          </div>
+        </div>
       </div>
 
       {showPremiumModal && (
@@ -199,7 +198,6 @@ const FarmerAccountPage = () => {
               <li>Exclusive market insights</li>
             </ul>
             <div className="modal-actions">
-              
               <button 
                 className="join-button"
                 onClick={() => navigate('/premium')}

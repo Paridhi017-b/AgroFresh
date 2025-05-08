@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignUp.css";
 
+axios.defaults.withCredentials = true; // ⚠️ Needed to allow sending cookies
+
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,20 +33,17 @@ const SignUp = () => {
     }
 
     try {
-      // Replace localhost with your deployed backend URL before deploying
-      const res = await axios.post("http://localhost:5000/signup", {
-        name,
-        email,
-        password
-      });
+      const res = await axios.post(
+        "http://localhost:5000/signup",
+        { name, email, password },
+        { withCredentials: true } // ⬅️ This allows session cookie to be set
+      );
 
       if (res.data.success) {
-        // Registration successful – no localStorage used
-        navigate("/products");
+        navigate("/signin"); // After signup, user goes to signin
       } else {
         setError("Registration failed. Email may already exist.");
       }
-
     } catch (err) {
       console.error(err);
       const message = err.response?.data?.message || "Something went wrong. Please try again.";

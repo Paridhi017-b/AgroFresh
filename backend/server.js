@@ -1,12 +1,32 @@
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
+const session = require("express-session");
 
 const app = express();
-app.use(cors());
+
+// ✅ CORS setup
+app.use(cors({
+  origin: "http://localhost:3000", // frontend origin
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+}));
+
 app.use(express.json());
 
-// MySQL connection
+// ✅ Session setup
+app.use(session({
+  secret: 'meraSecretCode',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false,        // set true if using https
+    httpOnly: true,
+    sameSite: 'lax'       // 'lax' is safe for most dev cases
+  }
+}));
+
+// ✅ MySQL connection
 const db = mysql.createConnection({
   host: "sql12.freesqldatabase.com",
   user: "sql12777507",
@@ -22,15 +42,14 @@ db.connect((err) => {
   console.log("✅ Connected to MySQL");
 });
 
-// Health check route
+// ✅ Health check
 app.get("/health", (req, res) => {
   res.json({ status: "OK", database: "connected" });
 });
 
-// Signup route (for login system)
+// ✅ Signup
 app.post("/signup", (req, res) => {
   const { name, email, password } = req.body;
-
   const sql = "INSERT INTO signin (name, email, password) VALUES (?, ?, ?)";
 
   db.query(sql, [name, email, password], (err, result) => {
@@ -45,10 +64,9 @@ app.post("/signup", (req, res) => {
   });
 });
 
-// Signin route (for login system)
+// ✅ Signin with session
 app.post("/signin", (req, res) => {
   const { email, password } = req.body;
-
   const sql = "SELECT * FROM signin WHERE email = ? AND password = ?";
 
   db.query(sql, [email, password], (err, results) => {
@@ -57,14 +75,39 @@ app.post("/signin", (req, res) => {
       return res.status(500).json({ success: false, message: "Database error" });
     }
     if (results.length > 0) {
-      return res.status(200).json({ success: true, user: results[0] });
+      req.session.user = {
+        id: results[0].id,
+        name: results[0].name,
+        email: results[0].email
+      };
+      return res.status(200).json({ success: true, message: "Login successful" });
     } else {
       return res.status(401).json({ success: false, message: "Invalid email or password" });
     }
   });
 });
 
-// Farmer Registration route
+// ✅ Profile (protected)
+app.get("/profile", (req, res) => {
+  if (req.session.user) {
+    res.json({ success: true, user: req.session.user });
+  } else {
+    res.status(401).json({ success: false, message: "Unauthorized" });
+  }
+});
+
+// ✅ Logout
+app.post("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).json({ success: false, message: "Logout failed" });
+    }
+    res.clearCookie("connect.sid");
+    res.json({ success: true, message: "Logged out successfully" });
+  });
+});
+
+// ✅ Farmer registration
 app.post("/register-farmer", (req, res) => {
   const { fullName, email, phone, farmLocation, produceType } = req.body;
 
@@ -82,7 +125,7 @@ app.post("/register-farmer", (req, res) => {
   });
 });
 
-// Start server
+// ✅ Start server
 const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
