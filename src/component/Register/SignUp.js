@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignUp.css";
 
+
 axios.defaults.withCredentials = true; // ⚠️ Needed to allow sending cookies
+
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -37,6 +39,7 @@ const SignUp = () => {
         "http://localhost:5000/signup",
         { name, email, password },
         { withCredentials: true } // ⬅️ This allows session cookie to be set
+
       );
 
       if (res.data.success) {

@@ -3,7 +3,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./SignIn.css";
 import axios from "axios";
 
+
 axios.defaults.withCredentials = true; // ⬅️ This is important for session cookies
+
+axios.defaults.withCredentials = true; // ⬅ This is important for session cookies
+
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -25,6 +29,8 @@ const SignIn = () => {
         "http://localhost:5000/signin",
         { email, password },
         { withCredentials: true } // ⬅️ Ensures cookie is sent/received
+       
+
       );
 
       if (res.data.success) {

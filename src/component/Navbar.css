@@ -1,122 +1,102 @@
-/* Buttons section (line-proof) */
+/* Base Navbar Styles */
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background: white;
-  padding: 20px 40px;
   border-bottom: 1px solid #eee;
-  flex-wrap: wrap; /* Allow wrap if needed but controlled */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
 
-.navbar-buttons {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 16px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1 !important;
-    vertical-align: middle !important;
-    border: none;
-    outline: none;
-    box-shadow: none !important;
-    text-decoration: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: transparent; /* default */
-  }
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  width: 100%;
+  margin: 0 auto;
+}
 
-  .nav-links {
-    display: flex;
-    gap: 25px;
-    flex-wrap: nowrap;
-    align-items: center;
-    margin: 0 20px;
-  }
-  
-  ul.nav-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  
-  .btn:focus,
-  .btn:active {
-    outline: none;
-    box-shadow: none;
-  }
-  
-  /* Green solid button */
-  .green {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  /* Green outline button */
-  .green-outline {
-    border: 2px solid #28a745;
-    color: #28a745;
-  }
-  
-  /* Hover styles */
-  .green:hover {
-    background-color: #218838;
-  }
-  
-  .green-outline:hover {
-    background-color: #28a745;
-    color: white;
-  }
-  .join-buttons {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  .join-btn {
-    background-color: #28a745;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    vertical-align: middle;
-    transition: background-color 0.3s ease;
-  }
-  
-  .join-btn:hover {
-    background-color: #218838;
-  }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
+.logo img {
+  height: 40px;
+}
 
-  /* Dropdown styles */
+.logo span {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.nav-main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #28a745;
+}
+
+.join-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.join-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.join-btn:hover {
+  background-color: #218838;
+}
+
 .dropdown {
   position: relative;
 }
 
 .dropdown-toggle {
   cursor: pointer;
-  padding: 10px;
   display: inline-block;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 40px;
+  top: 100%;
   left: 0;
   background-color: white;
   border-radius: 6px;
@@ -126,7 +106,6 @@
 }
 
 .dropdown-menu li {
-  list-style: none;
   padding: 10px 15px;
 }
 
@@ -140,23 +119,76 @@
   background-color: #f0f0f0;
 }
 
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  padding: 5px;
+}
 
-
-@media (max-width: 768px) {
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .navbar-container {
+    flex-wrap: wrap;
+  }
+  
+  .nav-content {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    gap: 15px;
+    transition: max-height 0.3s ease-out;
+  }
+  
+  .nav-content.active {
+    max-height: 500px;
+    padding: 15px 0;
+  }
+  
   .nav-links {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    margin: 10px 0;
+    gap: 15px;
+    width: 100%;
   }
-
+  
   .join-buttons {
     flex-direction: column;
-    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  .join-btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    width: 100%;
     margin-top: 10px;
   }
+  
+  .burger {
+    display: block;
+  }
+}
 
-  .navbar {
-    padding: 15px 20px;
+@media (max-width: 480px) {
+  .logo span {
+    font-size: 1rem;
+  }
+  
+  .join-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .burger {
+    font-size: 1.3rem;
   }
 }

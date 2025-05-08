@@ -1,4 +1,5 @@
 import React from 'react';
+import Layout from '../Layout';
 import Navbar from '../Navbar';
 const Products = () => {
   return (
