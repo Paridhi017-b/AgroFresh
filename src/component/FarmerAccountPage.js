@@ -209,8 +209,7 @@ const FarmerAccountPage = () => {
                 Close
               </button>
 
-              <button className="join-button" onClick={() => navigate('/premium')}>Join Now</button>
-              <button className="close-button" onClick={togglePremiumModal}>Close</button>
+              
 
             </div>
           </div>
