@@ -1,0 +1,40 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "kill": "taskkill /f /im node.exe"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cashfreepayments/cashfree-js": "^1.0.5",
+    "@cashfreepayments/cashfree-sdk": "^0.1.7",
+    "axios": "^1.9.0",
+    "bcrypt": "^5.1.1",
+    "cashfree-dropjs": "^1.1.5",
+    "cashfree-pg": "^5.0.8",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "express-rate-limit": "^6.11.2",
+    "express-session": "^1.18.1",
+    "file-saver": "^2.0.5",
+    "html2canvas": "^1.4.1",
+    "i18next": "^25.2.0",
+    "i18next-browser-languagedetector": "^8.1.0",
+    "i18next-http-backend": "^3.0.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.14.1",
+    "nodemailer": "^7.0.3",
+    "openai": "^4.98.0",
+    "pdfkit": "^0.17.1",
+    "react-i18next": "^15.5.1"
+  },
+  "description": ""
+}
