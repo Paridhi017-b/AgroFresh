@@ -1,0 +1,173 @@
+/* FarmerMarketplace.css */
+.farmer-marketplace-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  position: relative;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.marketplace-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ 
+  z-index: 0;
+}
+
+.marketplace-content {
+  max-width: 800px;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.marketplace-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.marketplace-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.brand-name {
+  color: #ffcc00;
+  font-weight: 800;
+}
+
+.marketplace-subtitle {
+  font-size: 1.4rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.offer-text {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.3rem;
+  background-color: rgba(255, 204, 0, 0.2);
+  padding: 10px 20px;
+  border-radius: 50px;
+  margin-bottom: 30px;
+}
+
+.register-btn {
+  background-color: #ffcc00;
+  color: #2a5a2a;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.register-btn:hover {
+  background-color: #e6b800;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(255, 204, 0, 0.6);
+}
+
+.login-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 10px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.login-btn:hover {
+  background-color: white;
+  color: #2a5a2a;
+}
+
+/* Animation for the plant emoji */
+@keyframes grow {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.plant-emoji {
+  display: inline-block;
+  margin-right: 10px;
+  animation: grow 2s infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .marketplace-title {
+    font-size: 2rem;
+  }
+  
+  .marketplace-subtitle {
+    font-size: 1.1rem;
+  margin-bottom: 20px;
+  }
+  
+  .offer-text {
+    font-size: 1rem;
+  padding: 8px 15px;
+  }
+  
+  .register-btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+  
+  .login-btn {
+    top: 20px;
+    right: 20px;
+    padding: 8px 20px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .products-section {
+    padding: 30px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}

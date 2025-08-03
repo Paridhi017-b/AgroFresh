@@ -1,0 +1,240 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #222;
+}
+
+.logo img {
+  width: 40px;
+  margin-right: 8px;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #28a745;
+}
+
+/* Join Buttons Section */
+.join-buttons {
+  display: flex;
+  gap: 10px; /* Adds spacing between buttons */
+  align-items: center;
+}
+
+.join-btn {
+  background: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.join-btn:hover {
+  background: #218838;
+}
+
+/* Hero Section */
+.hero {
+  background: url("https://i.pinimg.com/originals/ee/3c/15/ee3c156ec4646201c7314fad4f47ce7a.gif") center/cover no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  margin-top: 70px;
+  width: 100%;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.tagline {
+  background: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.explore-btn, .get-started-btn {
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.explore-btn {
+  background: #28a745;
+  color: white;
+}
+
+.get-started-btn {
+  background: #ff5722;
+  color: white;
+}
+
+.explore-btn:hover {
+  background: #218838;
+}
+
+.get-started-btn:hover {
+  background: #e64a19;
+}
+
+/* Why Choose AgroFresh Section */
+.why-choose {
+  text-align: center;
+  background: #f0fbe6;
+  padding: 50px 20px;
+  width: 100%;
+}
+
+.why-choose h2 {
+  font-size: 2em;
+  color: #111;
+}
+
+.why-choose p {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  border-bottom: 5px solid #4CAF50;
+}
+
+.feature-card h3 {
+  color: #111;
+  font-size: 1.5em;
+}
+
+.feature-card p {
+  color: #555;
+  font-size: 1em;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .feature-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 24px;
+  }
+  
+  .hero p {
+    font-size: 14px;
+  }
+  
+  .explore-btn, .get-started-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}

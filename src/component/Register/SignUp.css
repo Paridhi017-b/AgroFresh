@@ -1,0 +1,235 @@
+/* Auth Container */
+.signin-container {
+  background: url("https://w0.peakpx.com/wallpaper/910/11/HD-wallpaper-fruits-food-still-life-fruit-vegetable-fruits-vegetables.jpg") no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Dark Overlay */
+.signin-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Auth Box */
+.signin-box {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  width: 400px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.signin-box h2 {
+  color: #fff;
+  font-size: 26px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.signin-box p {
+  color: #fff;
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
+/* Input Fields */
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  color: #333;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.password-wrapper input {
+  padding-right: 40px;
+}
+
+.input-group input:focus {
+  border-color: #ff7b2e;
+}
+
+/* Password Toggle */
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
+  user-select: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.toggle-password:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #ff7b2e;
+}
+
+.toggle-password:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Terms Checkbox */
+.terms {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 14px;
+  justify-content: center;
+}
+
+.terms input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #ff7b2e;
+  appearance: auto;
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+  background-color: white;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+.terms a {
+  color: #ff7b2e;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.terms a:hover {
+  color: #ff4e00;
+  text-decoration: underline;
+}
+
+/* Auth Button */
+.signin-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(45deg, #ff7b2e, #ff4e00);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.signin-btn:hover {
+  background: linear-gradient(45deg, #ff4e00, #d93900);
+  transform: scale(1.02);
+}
+
+/* Forgot Password / Auth Toggle Link */
+.ForgotPassword {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.ForgotPassword a {
+  color: #ff7b2e;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.ForgotPassword a:hover {
+  color: #ff4e00;
+  text-decoration: underline;
+}
+
+.signup-link {
+  margin-top: 20px;
+  font-size: 15px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.signup-link a {
+  color: #ff7b2e;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.signup-link a:hover {
+  color: #ff4e00;
+  text-decoration: underline;
+}
+
+/* Error Message */
+.error-message {
+  color: #ff3333;
+  font-size: 14px;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  border-radius: 5px;
+  border-left: 3px solid #ff3333;
+}
+
+/* Success Message */
+.success-message {
+  color: #00cc66;
+  font-size: 14px;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  border-radius: 5px;
+  border-left: 3px solid #00cc66;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .products-section {
+    padding: 30px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .signin-box {
+    width: 90%;
+    padding: 30px 20px;
+  }
+}

@@ -1,0 +1,180 @@
+/* Background Image */
+.signin-container {
+    background: url("https://www.digicomply.com/hubfs/AI-Generated%20Media/Images/FarmtoTable%20Movement-1.jpeg") no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Dark Overlay */
+.signin-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Darker overlay for better contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Sign-In Box */
+.signin-box {
+    background: rgba(255, 255, 255, 0.25); /* Slightly more solid background */
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    width: 450px; /* Increased width for consistent fields */
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Improve Text Visibility */
+.signin-box h2 {
+    color: #fff;
+    font-size: 26px; /* Larger font */
+    font-weight: bold;
+}
+
+.signin-box p {
+    color: #f1f1f1;
+    font-size: 16px;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.input-group input {
+    width: 100%;
+    height: 50px; /* Fixed height for all inputs */
+    padding: 12px; 
+    font-size: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.95); /* More solid background */
+    color: #000;
+    outline: none;
+    font-weight: bold;
+    box-sizing: border-box; /* Ensures padding doesn't affect size */
+}
+
+.input-group input::placeholder {
+    color: rgba(0, 0, 0, 0.7); /* More visible placeholder */
+    font-size: 14px;
+}
+
+/* Button - Same size as inputs */
+.signin-btn {
+    width: 100%;
+    height: 50px; /* Matches input field height */
+    font-size: 16px;
+    background: linear-gradient(135deg, #ff7b00, #ff5000);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.signin-btn:hover {
+    background: linear-gradient(135deg, #ff5000, #e04300);
+}
+
+/* Signup Link */
+.signup-link {
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #ddd;
+}
+
+.signup-link a {
+    color: #ff7b00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link a:hover {
+    color: #ff5000;
+    text-decoration: underline;
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Success Message */
+.success-message {
+    color: #33cc33;
+    font-size: 14px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 12px;
+    border-radius: 5px;
+    border-left: 4px solid #33cc33;
+}
+
+/* Password Toggle */
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+    user-select: none;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.toggle-password:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: #ff7b00;
+}
+
+.toggle-password:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .products-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .products-section {
+      padding: 30px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+}

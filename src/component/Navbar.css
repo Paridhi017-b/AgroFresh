@@ -1,0 +1,244 @@
+/* Base Navbar Styles */
+.navbar {
+  background: white;
+  border-bottom: 1px solid #eee;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.logo span {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.nav-main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #28a745;
+}
+
+.join-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.join-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.join-btn:hover {
+  background-color: #218838;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  padding: 10px 15px;
+}
+
+.dropdown-menu li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f0f0f0;
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  padding: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .navbar-container {
+    flex-wrap: wrap;
+  }
+  
+  .nav-content {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    gap: 15px;
+    transition: max-height 0.3s ease-out;
+  }
+  
+  .nav-content.active {
+    max-height: 500px;
+    padding: 15px 0;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .join-buttons {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  .join-btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .burger {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo span {
+    font-size: 1rem;
+  }
+  
+  .join-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .burger {
+    font-size: 1.3rem;
+  }
+}
+/* Add these to your existing Navbar.css */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 5px;
+}
+
+.lang-btn {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.lang-btn.active {
+  background: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+}
+
+.lang-btn:hover {
+  background: #f0f0f0;
+}
+
+.lang-btn.active:hover {
+  background: #3e8e41;
+}
+
+/* Adjust for mobile */
+@media (max-width: 768px) {
+  .nav-actions {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  .language-switcher {
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

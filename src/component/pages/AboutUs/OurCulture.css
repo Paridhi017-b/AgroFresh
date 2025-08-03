@@ -1,0 +1,352 @@
+.culture-page {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #1a202c;
+  line-height: 1.6;
+  background-color: #f9fafb;
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.culture-page .culture-hero {
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #2b6cb0, #4299e1);
+  color: white;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+.culture-page .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+}
+
+.culture-page .hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.culture-page .hero-image {
+  justify-self: end;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 40px;
+}
+
+.culture-page .hero-text h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.culture-page .hero-text .lead {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.culture-page .hero-text .subtext {
+  font-size: 1.1rem;
+  max-width: 500px;
+  opacity: 0.8;
+}
+
+.culture-page .hero-decoration {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: grid;
+  place-items: center;
+}
+
+.culture-page .deco-circle {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255,255,255,0.3);
+  animation: rotate 20s linear infinite;
+}
+
+.culture-page .deco-square {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 2px solid rgba(255,255,255,0.2);
+  transform: rotate(15deg);
+}
+
+.culture-page .core-values {
+  flex: 1;
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.culture-page .section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.culture-page .section-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+}
+
+.culture-page .divider {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, #ed8936, #dd6b20);
+  margin: 0 auto 1.5rem; /* ↓ tighter spacing */
+  position: relative;
+  overflow: hidden;
+}
+
+.culture-page .divider-inner {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #4299e1, #3182ce);
+  animation: slide 3s ease-in-out infinite alternate;
+}
+
+.culture-page .section-description {
+  max-width: 600px;
+  font-size: 1.1rem;
+  color: #4a5568;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.culture-page .values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.culture-page .value-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  min-height: 280px;
+}
+
+.culture-page .value-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.culture-page .centered-card {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.culture-page .card-bg-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background-size: 40px 40px;
+}
+
+.culture-page .card-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.culture-page .card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.culture-page .card-text h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.culture-page .card-text h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.culture-page .card-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Background pattern classes */
+.culture-page .pattern-dots {
+  background-image: radial-gradient(currentColor 2px, transparent 2px);
+  background-size: 20px 20px;
+}
+
+.culture-page .pattern-grid {
+  background-image: 
+    linear-gradient(currentColor 1px, transparent 1px),
+    linear-gradient(90deg, currentColor 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.culture-page .pattern-waves {
+  background-image: radial-gradient(circle at 10% 20%, currentColor 0%, transparent 20%);
+  background-size: 30px 30px;
+}
+
+.culture-page .pattern-diamonds {
+  background-image: 
+    linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%),
+    linear-gradient(-45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%);
+  background-size: 20px 20px;
+}
+
+.culture-page .pattern-cross {
+  background-image: 
+    linear-gradient(currentColor 1px, transparent 1px),
+    linear-gradient(90deg, currentColor 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Color Variants */
+.culture-page .sky-card { background-color: #f0f9ff; color: #0ea5e9; }
+.culture-page .mint-card { background-color: #f5fffa; color: #20c997; }
+.culture-page .butter-card { background-color: #fffdf2; color: #f5b301; }
+.culture-page .peach-card { background-color: #fff5f0; color: #fd7e14; }
+.culture-page .lavender-card { background-color: #fbf9ff; color: #9775fa; }
+.culture-page .blush-card { background-color: #fff0f6; color: #f06595; }
+.culture-page .ice-card { background-color: #f0fcff; color: #22b8cf; }
+
+/* Animations */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slide {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Decorative Dots */
+.culture-page .deco-dots {
+  position: absolute;
+  inset: 0;
+}
+
+.culture-page .deco-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  top: calc(50% - 6px);
+  left: calc(50% - 6px);
+  animation: pulse 2s ease-in-out infinite;
+  opacity: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .culture-page .culture-hero {
+    height: auto;
+    padding: 4rem 1.5rem;
+  }
+
+  .culture-page .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .culture-page .hero-text {
+    margin-bottom: 3rem;
+  }
+
+  .culture-page .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .culture-page .hero-text .lead {
+    font-size: 1.3rem;
+  }
+
+  .culture-page .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .culture-page .hero-decoration {
+    margin: 0 auto;
+  }
+
+  .culture-page .centered-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .culture-page .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .culture-page .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .culture-page .hero-decoration {
+    width: 200px;
+    height: 200px;
+  }
+
+  .culture-page .deco-circle {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .products-section {
+    padding: 30px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

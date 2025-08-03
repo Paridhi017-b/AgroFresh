@@ -1,0 +1,220 @@
+/* OurTeam.css */
+.team-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+  }
+  
+  .team-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .team-header h1 {
+    color: #2c6e49;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .team-header p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+  
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    overflow: hidden;
+  }
+  
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .member-slide {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .member-photo-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    border: 4px solid #2c6e49;
+    background-color: #f0f0f0; /* Fallback background */
+  }
+  
+  .member-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .member-info {
+    text-align: center;
+  }
+  
+  .member-info h3 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  
+  .contact-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid;
+    background: none;
+    font-size: 0.9rem;
+  }
+  
+  .email {
+    border-color: #2c6e49;
+    color: #2c6e49;
+  }
+  
+  .linkedin {
+    border-color: #0077b5;
+    color: #0077b5;
+  }
+  
+  .github {
+    border-color: #333;
+    color: #333;
+  }
+  
+  .email:hover {
+    background: rgba(44, 110, 73, 0.1);
+  }
+  
+  .linkedin:hover {
+    background: rgba(0, 119, 181, 0.1);
+  }
+  
+  .github:hover {
+    background: rgba(51, 51, 51, 0.1);
+  }
+  
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #2c6e49;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .carousel-button:hover {
+    background: #2c6e49;
+    color: white;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    gap: 0.5rem;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border: none;
+    padding: 0;
+  }
+  
+  .dot.active {
+    background: #2c6e49;
+  }
+  
+  @media (max-width: 768px) {
+    .member-photo-container {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .contact-links {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    
+    .carousel-button {
+      width: 35px;
+      height: 35px;
+    }
+    
+    .member-info h3 {
+      font-size: 1.3rem;
+    }
+    
+    .contact-button {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  /* Responsive adjustments */
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .products-section {
+    padding: 30px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
